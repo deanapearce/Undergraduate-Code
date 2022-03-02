@@ -16,17 +16,13 @@ jobs:
       - name: Install latexdiff
         run: sudo apt-get install latexdiff
       - name: Run latexdiff
-        run: latexdiff --flatten old/test/test.tex new/test/test.tex > new/test/diff.tex
+        run: latexdiff --flatten old/main.tex new/main.tex > diff.tex
       - name: Compile LaTeX difference document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: diff.tex
-          working_directory: new/test/
-      - name: Check pdf files
-        run: |
-          file new/test/diff.pdf | grep -q ' PDF '
       - name: Upload
         uses: actions/upload-artifact@master
         with:
-          name: test
-          path: new/test
+          name: diff
+          path: diff.pdf
