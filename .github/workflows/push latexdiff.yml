@@ -18,7 +18,7 @@ jobs:
         run: |
           git clone 'https://gitlab.com/git-latexdiff/git-latexdiff.git'
           cd git-latexdiff
-          sudo make install
+          sudo make install-bin
           cd ../
           git latexdiff HEAD^^ -o 'diff.pdf'
       - uses: actions/upload-artifact@v2
