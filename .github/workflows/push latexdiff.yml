@@ -1,4 +1,4 @@
-name: Update latexdiff on push
+name: Update latexdiff on change
 
 on:
   push:
