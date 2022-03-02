@@ -7,20 +7,24 @@ on:
     - main.tex
 
 jobs:
-  latexdiff-action:
+  latexdiff-build:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 2
-      - uses: tawalaya/latex-diff-action@v1
-        with:
-          root_file: main.tex
+          fetch-depth: 0
+      - name: Install latexdiff
+        run: sudo apt install latexdiff
+      - name: Install git-latexdiff
+        run: |
+          git clone 'https://gitlab.com/git-latexdiff/git-latexdiff.git'
+          cd git-latexdiff
+          sudo make install
+          cd ../
+          git latexdiff HEAD^^ -o 'diff.pdf'
       - uses: upload-artifact@v2
         with:
           name: diff
           path: |
             diff.pdf
-            stats.txt
-            main.pdf
