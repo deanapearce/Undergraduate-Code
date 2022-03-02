@@ -4,6 +4,8 @@ name: Compile Test
 on:
   # Triggers the workflow on push or pull request events
   push:
+    paths:
+    - main.tex
   pull_request:
 
   # Allows you to run this workflow manually from the Actions tab
