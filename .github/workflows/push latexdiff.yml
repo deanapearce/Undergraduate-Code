@@ -21,7 +21,7 @@ jobs:
           sudo make install
           cd ../
           git latexdiff HEAD^^ -o 'diff.pdf'
-      - uses: upload-artifact@v2
+      - uses: actions/upload-artifact@v2
         with:
           name: diff
           path: diff.pdf
